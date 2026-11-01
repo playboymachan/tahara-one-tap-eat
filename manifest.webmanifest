@@ -1,0 +1,24 @@
+{
+  "name": "田原 ONE TAP EAT",
+  "short_name": "ONE TAP EAT",
+  "description": "今日の飯、ワンタップで。田原市のお店探し",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#fff6ec",
+  "theme_color": "#fff6ec",
+  "icons": [
+    {
+      "src": "./icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

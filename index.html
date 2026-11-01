@@ -1,0 +1,353 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>田原 ONE TAP EAT</title><style>
+:root{color-scheme:dark;--bg:#111c20;--card:#1b2b30;--muted:#a4b4b6;--gold:#e8b965}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:#f5f3eb;font-family:system-ui,-apple-system,"Noto Sans JP",sans-serif}.app{max-width:530px;margin:auto;padding:28px 17px 60px}header small{color:var(--gold);letter-spacing:.18em;font-weight:800}h1{font-size:36px;letter-spacing:.04em;margin:8px 0}header p{color:var(--muted);font-size:17px;margin:0 0 28px}.panel{background:var(--card);border:1px solid #34474b;border-radius:22px;padding:18px 12px 22px;box-shadow:0 16px 35px #0003}.labels{display:grid;grid-template-columns:1fr 1fr 1.2fr 1.25fr;gap:5px;text-align:center;font-size:18px;font-weight:750;margin-bottom:12px}.wheels{display:grid;grid-template-columns:1fr 1fr 1.2fr 1.25fr;gap:6px}.wheel{height:198px;overflow:auto;scroll-snap-type:y mandatory;overscroll-behavior:contain;scrollbar-width:none;border-radius:12px;background:#132126;position:relative}.wheel::-webkit-scrollbar{display:none}.wheel:before{content:"";pointer-events:none;position:sticky;top:66px;display:block;height:66px;margin-bottom:-66px;border-top:1px solid #e8b96588;border-bottom:1px solid #e8b96588;background:#e8b96512;z-index:2}.item{height:66px;display:flex;align-items:center;justify-content:center;scroll-snap-align:center;text-align:center;font-size:23px;padding:0 2px;color:#a6b5b5}.item.on{color:#fff;font-weight:800;font-size:25px}.pad{height:66px}.chosen{text-align:center;color:#e8c98d;margin:18px 0 2px;font-size:19px;min-height:20px}.go{display:block;width:100%;border:0;border-radius:17px;background:linear-gradient(135deg,#ffcf7e,#e6a54c);color:#2a231b;font-weight:900;font-size:22px;letter-spacing:.1em;padding:19px;box-shadow:0 7px 0 #996329,0 14px 22px #0005;transition:transform .08s,box-shadow .08s;touch-action:manipulation;margin:24px 0 24px;cursor:pointer}.go:active,.go.pressed{transform:translateY(7px);box-shadow:0 0 0 #996329,0 3px 8px #0005}.result{border-top:1px solid #35464a;padding-top:20px}h2{font-size:25px;margin:0 0 12px}.notice{background:#233439;border-radius:14px;padding:16px;color:#d1d9d8;line-height:1.8;font-size:20px}.meta{font-size:12px;color:var(--muted);margin-top:16px;line-height:1.7}a{color:#f5c77b}footer{font-size:12px;color:#9caaaa;margin-top:25px;text-align:center}
+.shop{padding:16px;margin:10px 0;background:var(--card);border-radius:15px;border:1px solid #34474b}.shop strong{display:block;font-size:clamp(29px,8vw,42px);line-height:1.22;overflow-wrap:anywhere;letter-spacing:.01em;margin-bottom:14px}.shop span{display:block;color:#e6eceb;font-size:20px;line-height:1.55;margin:10px 0}.shop span:nth-of-type(2){font-size:clamp(23px,6vw,30px);font-weight:750;color:#ffcf7e;background:#12252b;padding:12px;border-radius:12px;overflow-wrap:anywhere}.shop{padding:22px 18px;margin:18px 0}.shop a{margin-top:8px}.shop a{display:inline-block;font-size:16px}.result-note{color:var(--muted);line-height:1.6;font-size:15px} 
+.shop .shop-meta{font-size:15px;color:#b6c4c5;line-height:1.5;margin:8px 0}
+.shop .shop-hours{font-size:clamp(29px,8vw,42px);font-weight:900;line-height:1.35;color:#ffce7d;letter-spacing:.01em;margin:12px 0 3px;overflow-wrap:anywhere}
+.shop .shop-source{font-size:13px;color:#b9c4c4;line-height:1.5;margin:4px 0 12px}
+.shop .shop-map{font-size:17px;margin-top:8px}
+ .go:disabled{opacity:.6;cursor:wait}.labels{font-size:clamp(11px,3vw,16px)}.item{font-size:clamp(13px,3.8vw,20px);overflow-wrap:anywhere}.item.on{font-size:clamp(14px,4vw,22px)}  .coord-edit{display:block;margin-top:12px;background:#314c52;color:#fff;border:1px solid #e8b965;border-radius:10px;padding:10px;font-size:15px}.audit-details{margin-top:25px;background:#1b2b30;padding:15px;border-radius:14px}.audit-details summary{cursor:pointer;font-weight:bold}.audit-table{border-collapse:collapse;font-size:13px;margin-top:12px}.audit-table td,.audit-table th{padding:8px;border:1px solid #456;white-space:nowrap;text-align:left}
+.accuracy-panel{margin:18px 0 4px;background:#1b2b30;border:1px solid #52666b;border-radius:18px;padding:16px}.accuracy-panel h2{font-size:21px;margin:0 0 8px}.accuracy-panel p{font-size:13px;color:#b8c8c9;line-height:1.6}.audit-metric{display:grid;grid-template-columns:85px 1fr 68px;align-items:center;gap:8px;margin:9px 0;font-size:14px}.audit-track{height:10px;background:#0d171b;border-radius:8px;overflow:hidden}.audit-fill{height:100%;background:#e8b965}.audit-metric b{text-align:right;font-variant-numeric:tabular-nums}
+.audit-overall{font-size:18px;line-height:1.5}.audit-overall strong{font-size:30px;color:#ffcf7e;margin-left:5px}.audit-overall small{display:block;font-size:12px;color:#b9c4c4}.audit-complete{font-size:17px}
+/* V53: 確認状況の見出し文字を少し太く */
+.audit-details summary.audit-all-summary{font-weight:800!important;}
+/* V52: 全店舗確認状況の見出しをアイボリーに */
+.audit-details summary.audit-all-summary{background:#FFF5DF!important;color:#5B3A2F!important;border:1px solid #E6D4B5;border-radius:12px;padding:14px 12px;line-height:1.55;}
+
+/* V54: 営業時間の情報差異の見出しをアイボリーで統一 */
+.audit-details summary.hours-discrepancy-summary{background:#FFF5DF!important;color:#5B3A2F!important;border:1px solid #E6D4B5;border-radius:12px;padding:14px 12px;line-height:1.55;font-weight:800!important;}
+</style><meta name="theme-color" content="#fff6ec"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="ONE TAP EAT"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" href="./icon-192.png"><link rel="apple-touch-icon" href="./icon-192.png"><style id="v49-style">
+:root{color-scheme:light!important;--bg:#fff6ec!important;--card:#ffffff!important;--muted:#8c756a!important;--gold:#d98270!important}
+html,body{background:#fff6ec!important;color:#55463e!important;font-family:"Hiragino Maru Gothic ProN","Yu Gothic", "Noto Sans JP",system-ui,sans-serif!important}
+body{background:radial-gradient(circle at 15% 2%,#ffe1d8,transparent 38%),#fff6ec!important}
+.app{max-width:850px!important}
+header{background:transparent!important;color:#55463e!important;text-align:center!important;padding-top:22px!important}
+header small{color:#b77962!important;font-weight:800!important;letter-spacing:.12em!important}
+header h1{font-size:clamp(26px,6vw,42px)!important;line-height:1.3!important;color:#55463e!important;letter-spacing:-.025em!important}
+.brand-en{color:#cf7b6b!important;font-weight:900!important;letter-spacing:-.045em!important}
+.tagline{color:#a16f63!important;font-weight:750!important;margin:4px 0 9px!important}
+header p{color:#8d7167!important}
+.panel,.accuracy-panel,.shop{background:#fff!important;border:1px solid #f2dcd2!important;border-radius:24px!important;box-shadow:0 8px 30px rgba(128,77,55,.075)!important;color:#55463e!important}
+.wheel{background:#fff8f2!important;color:#55463e!important;border-color:#f1ded3!important;border-radius:14px!important}
+.item{color:#907c72!important}.item.on{color:#66473c!important;font-weight:900!important}
+.labels,.chosen,.shop .shop-meta,.shop .shop-source,.accuracy-panel p{color:#80685e!important}
+.go,#go{background:#d98270!important;color:#fff!important;border:0!important;border-radius:999px!important;box-shadow:0 7px 0 #b76658,0 12px 20px #e6b3a2!important;font-weight:900!important;letter-spacing:.025em!important}
+.go:active,#go:active{transform:translateY(5px)!important;box-shadow:0 2px 0 #b76658!important}
+.shop strong{color:#55463e!important}.shop .shop-hours{color:#bb6c5c!important}
+.audit-overall strong{color:#bf6c5b!important}
+a{color:#a85649!important}
+button{touch-action:manipulation}
+@media(max-width:450px){header h1{font-size:clamp(24px,6vw,34px)!important}.app{padding-left:12px!important;padding-right:12px!important}}
+
+/* V50: richer cocoa buttons and stronger drum selection band */
+.go,#go{background:linear-gradient(135deg,#8a5747,#694034)!important;color:#fffaf5!important;box-shadow:0 7px 0 #43271f,0 12px 20px rgba(89,50,38,.28)!important}
+.go:active,#go:active{box-shadow:0 2px 0 #43271f!important}
+.wheel:before{background:rgba(190,118,95,.32)!important;border-top:2px solid #b96e58!important;border-bottom:2px solid #b96e58!important;box-shadow:inset 0 0 0 1px rgba(255,255,255,.16)!important}
+.item.on{color:#4b2c24!important;text-shadow:0 1px 0 rgba(255,255,255,.6)!important}
+
+/* V51: white hours text on deep cocoa pill for legibility */
+.shop .shop-hours{display:block!important;color:#ffffff!important;background:#694034!important;border:1px solid #543126!important;border-radius:14px!important;padding:14px 16px!important;text-shadow:0 1px 1px rgba(0,0,0,.18)!important;box-shadow:0 3px 10px rgba(65,38,29,.12)!important;font-size:clamp(25px,7vw,37px)!important;line-height:1.45!important}
+</style><style id="v55-winter">header.winter-header{padding:0!important;margin:0 0 16px!important;background:none!important}header.winter-header .winter-banner{display:block;width:100%;height:auto;border-radius:22px;box-shadow:0 9px 25px rgba(112,86,105,.14)}header.winter-header .winter-text{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}.app{padding-top:14px!important}@media(max-width:480px){header.winter-header .winter-banner{border-radius:14px}}</style></head><body><main class="app"><header class="winter-header"><img class="winter-banner" src="./winter-banner.webp" alt="田原 ONE TAP EAT。今日の飯、ワンタップで。今日は何食べる？ くるっと選んで、GO！ 冬の雪景色と雪だるま" loading="eager"><div class="winter-text"><small>TAHARA · ONE TAP EAT</small><h1>田原 <span class="brand-en">ONE TAP EAT</span></h1><div class="tagline">今日の飯、ワンタップで。</div><p>今日は何食べる？ くるっと選んで、GO！</p></div></header><section class="panel"><div class="labels"><span>時間帯</span><span>曜日</span><span>料理・お店</span><span>並び順</span></div><div class="wheels"><div class="wheel" id="meal"></div><div class="wheel" id="day"></div><div class="wheel" id="food"></div><div class="wheel" id="order"></div></div><div class="chosen" id="chosen"></div></section><section id="accuracyPanel" class="accuracy-panel" aria-live="polite"><h2>店舗データ照合状況</h2><p>GOで全店舗のデータ充足率（％）を集計します。</p></section><button class="go" id="go">GO!　お店を探す →</button><section class="result" id="result"><h2>検索結果</h2><div class="notice">ドラムを回して「GO」を押してね。<br>登録店舗を検索できます。距離未確認の店舗も表示します。</div></section><p class="meta">※ 新規候補を追加。重複表記や営業実態の確認は継続中です。登録店舗は未検証の掲載候補です。重複や表記ゆれ、閉店の可能性があります。現在の営業状況、駅から10km以内かどうかは全件確認済みではありません。V30では一部店舗の公開情報を照合しました。曜日・時間帯の判定は未検証の仮データによる参考値です。来店前に店舗へ確認してください。</p><footer>ONE TAP EAT · FAMILY TEST</footer></main><script>
+const shops=[{"name":"大谷屋食堂","category":"定食"},{"name":"浜ちゃん","category":"定食"},{"name":"もく","category":"和食"},{"name":"おはや","category":"定食"},{"name":"若草","category":"洋食"},{"name":"いろは茶屋","category":"和食"},{"name":"珈琲屋 かれんと田原店","category":"カフェ・喫茶"},{"name":"こーひー家 茶苑","category":"カフェ・喫茶"},{"name":"Cafe 2910","category":"カフェ・喫茶"},{"name":"はなのき","category":"カフェ・喫茶"},{"name":"La clarte","category":"カフェ・喫茶"},{"name":"珈琲茶館 珈瑠満","category":"カフェ・喫茶"},{"name":"珈琲館 サムソン","category":"カフェ・喫茶"},{"name":"サクラカフェ","category":"カフェ・喫茶"},{"name":"中国料理 福忠","category":"中華料理"},{"name":"ラーメン宝塔 田原店","category":"ラーメン"},{"name":"阿竜亭","category":"ラーメン"},{"name":"健香食堂","category":"中華料理"},{"name":"中国料理 蓬萊亭","category":"中華料理"},{"name":"chinese-kitchen 海","category":"中華料理"},{"name":"麺吉","category":"ラーメン"},{"name":"王府 たはら店","category":"中華料理"},{"name":"ハッピーバレー 田原店","category":"イタリアン"},{"name":"WASHAGANCHI 田原店","category":"イタリアン"},{"name":"ガネーシャ","category":"カレー"},{"name":"casa buono","category":"イタリアン"},{"name":"みかわの郷本店","category":"うどん"},{"name":"とんかつやまと","category":"とんかつ"},{"name":"三ぷくうどん","category":"うどん"},{"name":"グリル華","category":"洋食"},{"name":"うどん・そば 伴喜","category":"うどん"},{"name":"鈴幸","category":"和食"},{"name":"マクドナルド 田原パオ店","category":"洋食"},{"name":"すき家 259号田原店","category":"定食"},{"name":"モスバーガー田原店","category":"洋食"},{"name":"ガスト 三河田原店","category":"洋食"},{"name":"はま寿司 田原店","category":"寿司"},{"name":"かつさと 田原めっくんはうす店","category":"とんかつ"},{"name":"田原市役所食堂","category":"定食"},{"name":"和食処 裕","category":"和食"},{"name":"食事処 四季亭","category":"和食"},{"name":"田中めし亭 田原店","category":"定食"},{"name":"レストラン くじゅう","category":"洋食"},{"name":"源氏寿司","category":"寿司"},{"name":"焼肉ジャンビア","category":"焼肉"},{"name":"焼肉 ぼうや","category":"焼肉"},{"name":"焼肉 泰将","category":"焼肉"},{"name":"夕やけ横丁三丁目","category":"居酒屋"},{"name":"炭火焼き鳥 正","category":"焼き鳥"},{"name":"遊食ダイニング 風雅","category":"居酒屋"},{"name":"福住","category":"和食"},{"name":"石挽き香りそば みつまる","category":"そば"},{"name":"めん処 はないち","category":"うどん"},{"name":"にぎやか麺YA!! たっちゃん家","category":"ラーメン"},{"name":"珈琲文庫","category":"カフェ・喫茶"},{"name":"喫茶 サンライト","category":"カフェ・喫茶"},{"name":"喫茶まるご","category":"カフェ・喫茶"},{"name":"喫茶 オパール","category":"カフェ・喫茶"},{"name":"パンプキン","category":"カフェ・喫茶"},{"name":"カフェレスト きいぷ","category":"カフェ・喫茶"},{"name":"カフェ&ギャラリー Cheers! ちあーず！","category":"カフェ・喫茶"},{"name":"六左ヱ門","category":"カフェ・喫茶"},{"name":"焼肉しんか","category":"焼肉"},{"name":"焼肉レストラン 欣龍","category":"焼肉"},{"name":"焼肉 笑徳 田原店","category":"焼肉"},{"name":"じゅうじゅう家","category":"焼肉"},{"name":"大浜屋","category":"和食"},{"name":"なごみの郷","category":"和食"},{"name":"食事処 田原屋","category":"和食"},{"name":"お食事処 ないき","category":"和食"},{"name":"八百重","category":"和食"},{"name":"おやこどり","category":"焼き鳥"},{"name":"げんき村","category":"居酒屋"},{"name":"旬屋 はなみち","category":"居酒屋"},{"name":"創作料理居酒屋 kai","category":"居酒屋"},{"name":"レストラン サーフィン","category":"洋食"},{"name":"レストラン岬路","category":"洋食"},{"name":"トリデンテ","category":"イタリアン"},{"name":"ガネーシャ 田原店","category":"カレー"},{"name":"ほっともっと田原町店","category":"定食"},{"name":"お弁当どんどん 田原店","category":"定食"},{"name":"からだ想いキッチン Funfun","category":"定食"},{"name":"さかの途中の満喫茶屋","category":"カフェ・喫茶"},{"name":"imacoco","category":"カフェ・喫茶"},{"name":"風のマリーン","category":"カフェ・喫茶"},{"name":"椿","category":"カフェ・喫茶"},{"name":"園","category":"カフェ・喫茶"},{"name":"田原屋","category":"和食"},{"name":"花あかり","category":"和食"},{"name":"愛花夢","category":"カフェ・喫茶"},{"name":"DIEZ café","category":"カフェ・喫茶"},{"name":"Smile Fish IRAGO","category":"カフェ・喫茶"},{"name":"ルルモアナ","category":"カフェ・喫茶"},{"name":"喫茶ピア","category":"カフェ・喫茶"},{"name":"Bali CAFÉ42","category":"カフェ・喫茶"},{"name":"こも田のカレーパン","category":"カフェ・喫茶"},{"name":"久美浜海岸 タカ","category":"洋食"},{"name":"伝十","category":"洋食"},{"name":"松ちゃん","category":"定食"},{"name":"スズキ食堂","category":"定食"},{"name":"菊万","category":"居酒屋"},{"name":"りきまる","category":"居酒屋"},{"name":"味八","category":"居酒屋"},{"name":"北の国から","category":"居酒屋"},{"name":"三太郎","category":"定食"},{"name":"かわい","category":"定食"},{"name":"ラトリエ コリコ","category":"カフェ・喫茶"},{"name":"畑のケーキやさん","category":"カフェ・喫茶"},{"name":"ななつやま","category":"カフェ・喫茶"},{"name":"海岸通り","category":"カフェ・喫茶"},{"name":"フレイバー・ハウス","category":"カフェ・喫茶"},{"name":"マザーポケット","category":"カフェ・喫茶"},{"name":"アイヴィー館","category":"カフェ・喫茶"},{"name":"ココツキッチン","category":"カフェ・喫茶"},{"name":"3+cafe","category":"カフェ・喫茶"},{"name":"AryRose","category":"カフェ・喫茶"},{"name":"りぴぃと","category":"カフェ・喫茶"},{"name":"西山あるる","category":"カフェ・喫茶"},{"name":"かき氷 かわぐち","category":"カフェ・喫茶"},{"name":"旭屋","category":"うどん"},{"name":"渥美の丼屋 まるみ","category":"和食"},{"name":"田原ゆの里","category":"和食"},{"name":"オーシャンズピザ","category":"イタリアン"},{"name":"カジューバーガー","category":"洋食"},{"name":"ジュン","category":"洋食"},{"name":"シャミーズカフェ","category":"カフェ・喫茶"},{"name":"こも天","category":"定食"},{"name":"可祝","category":"居酒屋"},{"name":"やきや","category":"居酒屋"},{"name":"来村","category":"居酒屋"},{"name":"トップレディ","category":"居酒屋"},{"name":"スナック こまつ","category":"居酒屋"},{"name":"ユースケエーカー","category":"居酒屋"},{"name":"High Life Brewing","category":"居酒屋"},{"name":"スナック みどり","category":"居酒屋"},{"name":"Ease","category":"居酒屋"},{"name":"ブレア","category":"居酒屋"},{"name":"魚栄","category":"和食"},{"name":"玉川","category":"うなぎ"},{"name":"咲くや","category":"和食"},{"name":"うどん そば 伴喜","category":"うどん"}];
+// V30: 寿司店の補完。閉店報告がある店舗は営業候補から除外する。
+shops.push({name:"ひろ寿し",category:"寿司"},{name:"重の井",category:"寿司"},{name:"基巳屋（もとみや）",category:"焼肉"});
+const data={meal:["モーニング","ランチ","ディナー"],day:["月曜日","火曜日","水曜日","木曜日","金曜日","土曜日","日曜日"],food:["指定なし", "焼肉", "うどん", "そば", "とんかつ", "ラーメン", "うなぎ", "寿司", "パスタ", "中華料理", "和食", "定食", "洋食", "イタリアン", "居酒屋", "小料理屋", "カフェ・喫茶", "焼き鳥", "ステーキ", "カレー"]};
+data.order=["開店順","現在地順","田原駅順"];const index={meal:1,day:5,food:0,order:0};const esc=s=>s.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+function refresh(){document.getElementById("chosen").textContent=`${data.day[index.day]} · ${data.meal[index.meal]} · ${data.food[index.food]} · ${data.order[index.order]}`;for(const k of Object.keys(data)){document.querySelectorAll("#"+k+" .item").forEach((e,i)=>e.classList.toggle("on",i===index[k]))}}
+for(const k of Object.keys(data)){const w=document.getElementById(k);w.innerHTML='<div class="pad"></div>'+data[k].map(x=>'<div class="item">'+esc(x)+'</div>').join("")+'<div class="pad"></div>';w.scrollTop=index[k]*66;let timer;w.addEventListener("scroll",()=>{index[k]=Math.max(0,Math.min(data[k].length-1,Math.round(w.scrollTop/66)));refresh();clearTimeout(timer);timer=setTimeout(()=>w.scrollTo({top:index[k]*66,behavior:"smooth"}),130)},{passive:true})}refresh();
+// 営業時間は掲載情報に基づく参考値。曜日: 日0〜土6、時間帯は重なるかで判定。
+const schedules=[{"keys":["愛花夢"],"days":[1,2,3,4,5,6],"times":[["08:30","15:00"]],"source":"出典未照合"},{"keys":["パンプキン"],"days":[1,2,3,4,5,6],"times":[["07:00","17:00"]],"source":"出典未照合"},{"keys":["カフェレスト きいぷ"],"days":[0,2,3,4,5,6],"times":[["07:00","17:00"]],"source":"出典未照合"},{"keys":["Cheers!"],"days":[0,2,3,4,5,6],"times":[["08:30","14:00"]],"source":"出典未照合"},{"keys":["喫茶 オパール"],"days":[0,1,2,6],"times":[["07:30","11:00"]],"source":"出典未照合"},{"keys":["喫茶まるご"],"days":[1,2,3,4,5,6],"times":[["06:00","15:00"]],"source":"出典未照合"},{"keys":["珈琲茶館 珈瑠満"],"days":[0,2,3,4,5,6],"times":[["08:00","17:00"]],"source":"出典未照合"},{"keys":["サクラカフェ"],"days":[0,1,2,5,6],"times":[["09:00","18:00"]],"source":"出典未照合"},{"keys":["はなのき"],"days":[0,2,3,4,5,6],"times":[["10:00","15:00"]],"source":"出典未照合"},{"keys":["喫茶 サンライト"],"days":[0,1,2,3,4,5,6],"times":[["07:00","17:00"]],"source":"出典未照合"},{"keys":["こーひー家 茶苑"],"days":[0,1,2,3,4,6],"times":[["07:00","18:00"]],"source":"出典未照合"},{"keys":["珈琲館 サムソン"],"days":[0,2,3,4,5,6],"times":[["07:00","17:00"]],"source":"出典未照合"},{"keys":["Cafe 2910"],"days":[1,2,3,4,5,6],"times":[["08:00","17:30"]],"source":"出典未照合"},{"keys":["珈琲屋 かれんと田原店"],"days":[0,1,2,3,4,5,6],"times":[["07:00","18:00"]],"source":"出典未照合"},{"keys":["DIEZ café"],"days":[0,1,2,3,5,6],"times":[["08:00","17:00"]],"source":"出典未照合"},{"keys":["Smile Fish IRAGO"],"days":[0,1,2,4,5,6],"times":[["11:00","15:00"],["17:30","22:00"]],"source":"出典未照合"},{"keys":["ルルモアナ"],"days":[0,1,2,4,5,6],"times":[["11:00","15:00"],["17:30","22:00"]],"source":"出典未照合"},{"keys":["喫茶ピア"],"days":[0,1,3,4,5,6],"times":[["08:00","20:00"]],"source":"出典未照合"},{"keys":["Bali CAFÉ42"],"days":[0,1,3,4,5,6],"times":[["11:00","16:00"]],"source":"出典未照合"},{"keys":["こも田のカレーパン"],"days":[0,3,4,5,6],"times":[["08:30","14:00"]],"source":"出典未照合"},{"keys":["モスバーガー田原店"],"days":[0,1,2,3,4,5,6],"times":[["09:00","21:00"]],"source":"出典未照合"},{"keys":["マクドナルド 田原パオ店"],"days":[0,1,2,3,4,5,6],"times":[["06:00","23:00"]],"source":"出典未照合"},{"keys":["ハッピーバレー 田原店"],"days":[0,1,2,4,5,6],"times":[["11:00","22:00"]],"source":"出典未照合"},{"keys":["ガスト 三河田原店"],"days":[0,1,2,3,4,5,6],"times":[["08:00","24:00"]],"source":"出典未照合"},{"keys":["おはや"],"days":[0,2,3,4,5,6],"times":[["11:00","15:00"]],"source":"出典未照合"},{"keys":["レストラン サーフィン"],"days":[0,2,3,4,5,6],"times":[["09:00","15:00"],["17:00","20:00"]],"source":"出典未照合"},{"keys":["石挽き香りそば みつまる"],"days":[0,2,3,4,5,6],"times":[["11:00","14:30"],["17:00","20:00"]],"source":"出典未照合"},{"keys":["うどん・そば 伴喜"],"days":[0,1,3,4,5,6],"times":[["11:00","15:00"]],"source":"出典未照合"},{"keys":["めん処 はないち"],"days":[0,2,3,4,5,6],"times":[["11:00","15:00"],["17:30","21:00"]],"source":"出典未照合"},{"keys":["健香食堂"],"days":[1,2,3,4,5,6],"times":[["11:00","14:30"],["17:00","23:00"]],"source":"出典未照合"},{"keys":["王府 たはら店"],"days":[0,1,2,3,5,6],"times":[["11:30","14:30"],["17:30","24:00"]],"source":"出典未照合"},{"keys":["ラーメン宝塔 田原店"],"days":[2,3,4,5,6],"times":[["18:00","24:00"]],"source":"出典未照合"},{"keys":["阿竜亭"],"days":[1,2,3,4,5,6],"times":[["18:00","24:00"]],"source":"出典未照合"},{"keys":["みかわの郷本店"],"days":[0,1,2,3,4,5,6],"times":[["11:00","15:00"],["17:00","21:30"]],"source":"出典未照合"},{"keys":["なごみの郷"],"days":[0,1,2,3,4,5,6],"times":[["11:00","14:00"],["17:00","21:00"]],"source":"出典未照合"},{"keys":["鈴幸"],"days":[0,1,2,4,5,6],"times":[["11:00","14:00"],["17:00","22:00"]],"source":"出典未照合"},{"keys":["大浜屋"],"days":[0,1,2,3,4,5,6],"times":[["11:00","22:00"]],"source":"出典未照合"},{"keys":["遊食ダイニング 風雅"],"days":[0,1,2,3,5,6],"times":[["11:30","14:00"],["17:30","23:00"]],"source":"出典未照合"},{"keys":["三ぷくうどん"],"days":[0,1,3,4,5,6],"times":[["11:00","14:30"],["17:00","20:00"]],"source":"出典未照合"},{"keys":["レストラン くじゅう"],"days":[0,1,3,4,5,6],"times":[["11:00","14:00"]],"source":"出典未照合"},{"keys":["源氏寿司"],"days":[0,1,2,4,5,6],"times":[["11:00","14:00"],["17:00","21:30"]],"source":"出典未照合"},{"keys":["グリル華"],"days":[0,2,3,4,5,6],"times":[["11:00","14:00"],["17:00","20:00"]],"source":"出典未照合"},{"keys":["もく"],"days":[0,1,2,4,5,6],"times":[["11:00","14:00"],["17:00","22:30"]],"source":"出典未照合"},{"keys":["若草"],"days":[0,2,3,4,5,6],"times":[["11:00","14:00"],["17:00","20:30"]],"source":"出典未照合"},{"keys":["いろは茶屋"],"days":[0,2,3,4,5,6],"times":[["11:00","21:00"]],"source":"出典未照合"},{"keys":["食事処 四季亭"],"days":[0,2,3,4,5,6],"times":[["11:30","14:00"],["17:30","20:00"]],"source":"出典未照合"},{"keys":["八百重"],"days":[1,2,4,5,6],"times":[["11:00","14:00"],["18:00","23:00"]],"source":"出典未照合"},{"keys":["田原市役所食堂"],"days":[1,2,3,4,5],"times":[["09:00","17:00"]],"source":"出典未照合"},{"keys":["渥美の丼屋 まるみ"],"days":[0,1,3,4,5,6],"times":[["11:00","14:00"],["17:00","19:30"]],"source":"出典未照合"},{"keys":["中国料理 福忠"],"days":[0,1,2,4,5,6],"times":[["11:30","14:30"],["17:00","21:30"]],"source":"出典未照合"},{keys:['福住'],days:[2,3,4,5,6],times:[['17:00','22:00']],source:'出典未照合'}];
+schedules.unshift({keys:['珈琲屋 かれんと田原店'],days:[0,1,2,3,4,5,6],times:[['07:00','17:00']],dayTimes:{0:[['07:00','19:00']],5:[['07:00','19:00']],6:[['07:00','19:00']]},source:'店舗公式サイト（2026-11-01照合）'});
+const slot={"モーニング":['06:00','11:00'],"ランチ":['11:00','15:00'],"ディナー":['17:00','23:59']};
+const minutes=t=>{const [h,m]=t.split(':').map(Number);return h*60+m};
+function scheduleFor(name){return schedules.find(s=>s.keys.some(k=>name===k)) || schedules.find(s=>s.keys.some(k=>k.length>=5&&name.includes(k)))}
+
+// 2026-11-01 公開情報照合。公式/観光協会/第三者情報を区別する。
+const verifiedHours={
+ '三ぷくうどん':{days:[0,3,4,5,6],times:[['11:00','14:30'],['17:00','20:00']],source:'店舗公式サイト',url:'https://sites.google.com/view/sanpuku/',checked:'2026-11-01',lo:'昼14:10 / 夜19:40'},
+ '中国料理 福忠':{days:[0,1,2,4,5,6],times:[['11:30','14:30'],['17:00','21:30']],source:'店舗公式サイト',url:'https://fukuchu.net/',checked:'2026-11-01',lo:'昼14:00 / 夜21:00'},
+ 'みかわの郷本店':{days:[0,1,2,3,4,5,6],times:[['11:00','15:00'],['17:00','21:00']],source:'渥美半島観光ビューロー',url:'https://www.taharakankou.gr.jp/spot/spot.php?spot_id=327',checked:'2026-11-01',lo:'年末年始休み。別サイトと営業時間に差異あり'},
+ '福住':{days:[2,3,4,5,6],times:[['17:00','22:00']],source:'食べログ掲載情報（店舗公式未照合）',url:'https://tabelog.com/aichi/A2306/A230604/23019444/',checked:'2026-11-01',lo:'日・月休み'},
+};
+verifiedHours['はま寿司 田原店']={days:[0,1,2,3,4,5,6],times:[['10:00','24:00']],source:'はま寿司公式店舗情報',url:'https://maps.zensho.co.jp/jp/detail/4431.html',checked:'2026-11-01',lo:'最終入店23:30 / L.O.23:45'};
+verifiedHours['ひろ寿し']={days:[0,1,2,4,5,6],times:[['11:00','14:00'],['17:00','22:00']],source:'飲食店掲載情報（公式未照合）',url:'https://tabelog.com/aichi/C23231/rstLst/sushi/',checked:'2026-11-01',lo:'水曜定休・臨時休業は要確認'};
+verifiedHours['重の井']={days:[0,2,3,4,5,6],times:[['11:00','13:00'],['17:00','24:00']],source:'店舗利用者からの提供情報（公式未照合）',checked:'2026-11-01',lo:'月曜日定休・リニューアル後の営業時間'};
+// 2026-11-01 店舗公式ページ再確認。曜日別営業時間は dayTimes で保持。
+verifiedHours['マクドナルド 田原パオ店']={days:[0,1,2,3,4,5,6],times:[['06:00','23:00']],source:'マクドナルド公式店舗検索',url:'https://map.mcdonalds.co.jp/map/23569',checked:'2026-11-01',lo:'年中無休・朝マック6:00〜10:30'};
+verifiedHours['ガスト 三河田原店']={days:[0,1,2,3,4,5,6],times:[['08:00','24:00']],dayTimes:{0:[['07:00','24:00']],6:[['07:00','24:00']]},source:'すかいらーく公式店舗検索',url:'https://store-info.skylark.co.jp/gusto/map/011825/',checked:'2026-11-01',lo:'土日7:00開店・平日8:00開店（祝日は7:00、祝日判定は未実装）'};
+verifiedHours['はま寿司 田原店']={days:[0,1,2,3,4,5,6],times:[['10:00','24:00']],source:'はま寿司公式店舗検索',url:'https://maps.hama-sushi.co.jp/jp/detail/4431.html',checked:'2026-11-01',lo:'2026/10/1変更・最終入店23:30・L.O.23:45'};
+// V37: 2026-11-01 調査。出典別の信頼度を保持し、全店の未検証状態も可視化。
+Object.assign(verifiedHours,{
+ '王府 たはら店':{days:[0,1,2,3,4,5,6],times:[['11:30','14:30'],['17:30','25:00']],source:'渥美半島観光ビューロー',url:'https://www.taharakankou.gr.jp/spot/spot.php?search_category1=3&spot_id=323',checked:'2026-11-01',lo:'深夜1:00まで / L.O.0:30 / 臨時休業あり'},
+ '石挽き香りそば みつまる':{days:[0,2,3,4,5,6],times:[['11:00','14:30'],['17:00','20:00']],source:'地図掲載営業時間（店舗公式未照合）',checked:'2026-11-01'},
+ '麺吉':{days:[0,2,3,4,5,6],times:[['11:30','14:00'],['17:00','22:00']],dayTimes:{0:[['11:30','15:00'],['17:00','22:00']],6:[['11:30','15:00'],['17:00','22:00']]},source:'地図掲載営業時間（店舗公式未照合）',checked:'2026-11-01'},
+ 'うどん・そば 伴喜':{days:[0,1,3,4,5,6],times:[['11:00','20:00']],source:'地図掲載営業時間（店舗公式未照合）',checked:'2026-11-01'},
+ 'うどん そば 伴喜':{days:[0,1,3,4,5,6],times:[['11:00','20:00']],source:'地図掲載営業時間（店舗公式未照合）',checked:'2026-11-01'},
+ '源氏寿司':{days:[0,1,2,5,6],times:[['11:30','14:00'],['17:00','21:30']],source:'地図掲載営業時間（店舗公式未照合）',checked:'2026-11-01',lo:'水・木の営業は情報不一致のため要確認'},
+ 'めん処 はないち':{days:[0,2,3,4,5,6],times:[['11:00','15:00'],['17:30','20:00']],source:'地図掲載営業時間（店舗公式未照合）',checked:'2026-11-01'},
+ 'なごみの郷':{days:[0,1,2,3,4,5,6],times:[['11:00','15:30'],['17:00','21:30']],dayTimes:{0:[['11:00','21:30']],6:[['11:00','21:30']]},source:'地図掲載営業時間（店舗公式未照合）',checked:'2026-11-01'},
+ 'レストラン サーフィン':{days:[0,1,3,4,5,6],times:[['10:00','15:00'],['17:00','20:00']],dayTimes:{0:[['09:00','21:00']],6:[['09:00','21:00']]},source:'地図掲載営業時間（店舗公式未照合）',checked:'2026-11-01'}
+});
+// V43: 2026-11-01 追加照合。一次情報と地図掲載情報を区別して保存。
+Object.assign(verifiedHours,{
+ '石挽き香りそば みつまる':{days:[0,2,3,4,5,6],times:[['11:00','14:30'],['17:00','21:00']],source:'店舗公式サイト',url:'https://mitsumaru-inc.com/',checked:'2026-11-01',lo:'夜L.O.20:00'},
+ '大谷屋食堂':{days:[0,1,3,4,5,6],times:[['11:00','13:00'],['17:00','20:30']],source:'地図掲載情報（店舗公式未照合）',checked:'2026-11-01'},
+ 'グリル華':{days:[0,2,3,4,5,6],times:[['11:00','14:00'],['17:00','21:00']],source:'地図掲載情報（店舗公式未照合）',checked:'2026-11-01'},
+ '焼肉しんか':{days:[0,2,3,4,5,6],times:[['17:00','24:00']],source:'地図掲載情報（店舗公式未照合）',checked:'2026-11-01'},
+ '焼肉ジャンビア':{days:[0,2,3,4,5,6],times:[['17:00','22:00']],source:'地図掲載情報（店舗公式未照合）',checked:'2026-11-01'},
+ '焼肉レストラン 欣龍':{days:[0,1,2,3,4,5,6],times:[['11:00','14:00'],['17:00','22:00']],source:'地図掲載情報（店舗公式未照合）',checked:'2026-11-01'},
+ '北の国から':{days:[0,2,3,4,5,6],times:[['17:30','23:00']],source:'地図掲載情報（店舗公式未照合）',checked:'2026-11-01'},
+ '焼肉 ぼうや':{days:[0,1,2,3,4,5,6],times:[['17:00','23:00']],dayTimes:{0:[['15:00','23:00']]},source:'地図掲載情報（店舗公式未照合）',checked:'2026-11-01'},
+ '旬屋 はなみち':{days:[0,1,2,3,4,5,6],times:[['18:00','23:00']],source:'地図掲載情報（店舗公式未照合）',checked:'2026-11-01'},
+ 'めん処 はないち':{days:[0,2,3,4,5,6],times:[['11:00','15:00'],['17:30','20:00']],source:'地図掲載情報（店舗公式未照合）',checked:'2026-11-01'},
+ 'じゅうじゅう家':{days:[0,1,2,3,4,5,6],times:[['17:00','23:30']],dayTimes:{0:[['11:30','15:00'],['17:00','23:30']],6:[['11:30','15:00'],['17:00','23:30']]},source:'地図掲載情報（店舗公式未照合）',checked:'2026-11-01'}
+});
+// V43: 店舗掲載情報で照合。水曜日は夕方から営業。
+verifiedHours['基巳屋（もとみや）']={days:[0,1,2,3,4,5,6],times:[['11:00','15:00'],['17:00','21:30']],dayTimes:{3:[['17:00','21:30']]},source:'地図掲載営業時間・地域情報（公式未照合・昼休憩は要再確認）',url:'https://tabelog.com/aichi/A2306/A230604/23039167/',checked:'2026-11-01',lo:'水曜は17:00開店。途中休憩の有無は情報差異があり要確認'};
+
+// 登録全店を調査対象として管理。未照合の営業時間は「参考値」として残す。
+// V40: 店舗公式情報で照合した営業時間（2026-11-01）
+verifiedHours['ひろ寿し']={days:[0,1,2,4,5,6],times:[['11:00','14:00'],['17:00','22:00']],source:'ひろ寿し公式サイト',url:'https://hirozushi-tahara.jp/access.html',checked:'2026-11-01',lo:'水曜定休・月1〜2回不定休あり／夜L.O.21:30'};
+const auditSummary=()=>{const names=[...new Set(shops.map(x=>x.name))];const matched=names.filter(n=>verifiedHours[n]);return {total:names.length,reviewed:matched.length,pending:names.length-matched.length}};
+function timesFor(s,day){return s.dayTimes?.[day]||s.times}
+const originalScheduleFor=scheduleFor;
+scheduleFor=function(name){return verifiedHours[name]||originalScheduleFor(name)};
+
+function matchHours(s,day,meal){if(!s.days.includes(day))return false;const [a,b]=slot[meal].map(minutes);return timesFor(s,day).some(([x,y])=>minutes(x)<b&&minutes(y)>a)}
+const dayIndex=[1,2,3,4,5,6,0];
+const chainWords=["はま寿司","マクドナルド","モスバーガー","ガスト","すき家","ほっともっと","かつさと","お弁当どんどん","ハッピーバレー","WASHAGANCHI"];
+const isChain=x=>chainWords.some(n=>x.name.includes(n));
+const station={lat:34.6669,lon:137.2684}; // 三河田原駅付近・概算
+const knownAddresses={'珈琲屋 かれんと田原店':'愛知県田原市東赤石1丁目51番地'};
+const verifiedAddresses={'基巳屋（もとみや）':'愛知県田原市野田町池田35-1'};
+const phones={'珈琲屋 かれんと田原店':'0531-22-9877','基巳屋（もとみや）':'0531-25-0818'};
+Object.assign(phones,{"はま寿司 田原店": "0570-021-541", "中国料理 福忠": "0531-22-0317", "みかわの郷本店": "0531-22-6382", "ひろ寿し": "0531-22-2234", "阿竜亭": "0531-23-3873", "王府 たはら店": "0531-22-5225", "マクドナルド 田原パオ店": "0531-24-1435", "ハッピーバレー 田原店": "0531-23-2288", "かつさと 田原めっくんはうす店": "0531-27-6267", "喫茶まるご": "0531-22-0413", "源氏寿司": "0531-22-5838", "とんかつやまと": "0531-23-0456", "こも天": "0531-22-0700", "玉川": "0531-32-0234", "石挽き香りそば みつまる": "0531-28-0212", "鈴幸": "0531-22-4752", "咲くや": "0531-33-1516", "椿": "0531-37-5916", "めん処 はないち": "0531-45-4187", "こーひー家 茶苑": "0531-23-2760", "魚栄": "0531-27-0819", "うどん・そば 伴喜": "0531-22-0322", "うどん そば 伴喜": "0531-22-0322", "グリル華": "0531-22-3531", "喫茶ピア": "0531-45-2260", "北の国から": "0531-23-1678"});
+
+Object.assign(phones,{
+ '大谷屋食堂':'0531-22-1201','焼肉しんか':'0531-23-2885','焼肉ジャンビア':'0531-22-6626',
+ '焼肉レストラン 欣龍':'0531-23-0205','焼肉 ぼうや':'0531-23-2033','旬屋 はなみち':'0531-27-7887',
+ 'げんき村':'0531-22-7881','じゅうじゅう家':'0531-23-7665','田原市役所食堂':'090-9941-7304'
+});
+Object.assign(verifiedAddresses,{
+ '大谷屋食堂':'愛知県田原市田原町東大浜81','焼肉しんか':'愛知県田原市吉胡町清水8-1',
+ '焼肉ジャンビア':'愛知県田原市田原町新清谷97-1','焼肉レストラン 欣龍':'愛知県田原市浦町西畑151-1',
+ '焼肉 ぼうや':'愛知県田原市田原町汐見17','旬屋 はなみち':'愛知県田原市田原町東大浜96',
+ '石挽き香りそば みつまる':'愛知県田原市神戸町堀池103-1',
+ 'めん処 はないち':'愛知県田原市赤羽根町赤土25-8','北の国から':'愛知県田原市姫見台130',
+ '田原市役所食堂':'愛知県田原市田原町南番場30','グリル華':'愛知県田原市田原町倉田5-11'
+});
+
+// V41: 2026年版田原市飲食店マップおよび店舗公式情報で照合した追加データ。
+Object.assign(phones,{
+ '愛花夢':'0531-23-2665','パンプキン':'0531-22-1733',
+ 'カフェレスト きいぷ':'0531-22-6365','喫茶 オパール':'0531-24-8771',
+ '珈琲茶館 珈瑠満':'0531-23-3322','三ぷくうどん':'0531-22-6153',
+ '福住':'0531-22-0136'
+});
+// 観光案内の「Cheers! ちあーず!」とアプリの登録名を照合。
+phones['カフェ&ギャラリー Cheers! ちあーず！']='0531-23-0448';
+// 公的観光パンフレット掲載情報。臨時休業・最新の変更は未反映。
+const taharaMap2026='https://www.taharakankou.gr.jp/download_pamphlet/tahara_inshokuten_map_2026_p1.pdf?ID=20260224123300';
+Object.assign(verifiedHours,{
+ '愛花夢':{days:[0,2,3,4,5,6],times:[['08:30','15:00']],source:'田原市観光関連・2026年飲食店マップ',url:taharaMap2026,checked:'2026年版',lo:'月曜休業（祝日は翌日休み。祝日判定は未対応）'},
+ 'パンプキン':{days:[1,2,3,4,5,6],times:[['07:00','17:00']],source:'田原市観光関連・2026年飲食店マップ',url:taharaMap2026,checked:'2026年版'},
+ 'カフェレスト きいぷ':{days:[0,2,3,4,5,6],times:[['07:00','17:00']],source:'田原市観光関連・2026年飲食店マップ',url:taharaMap2026,checked:'2026年版'},
+ '喫茶 オパール':{days:[0,1,2,6],times:[['07:30','11:00']],source:'田原市観光関連・2026年飲食店マップ',url:taharaMap2026,checked:'2026年版'},
+ '喫茶まるご':{days:[1,2,3,4,5,6],times:[['06:00','15:00']],source:'田原市観光関連・2026年飲食店マップ',url:taharaMap2026,checked:'2026年版'},
+ '珈琲茶館 珈瑠満':{days:[0,2,3,4,5,6],times:[['08:00','17:00']],source:'田原市観光関連・2026年飲食店マップ',url:taharaMap2026,checked:'2026年版',lo:'第3火曜日休業（週次判定では未対応）'},
+ 'カフェ&ギャラリー Cheers! ちあーず！':{days:[0,2,3,4,5,6],times:[['08:30','14:00']],source:'田原市観光関連・2026年飲食店マップ',url:taharaMap2026,checked:'2026年版'},
+ '三ぷくうどん':{days:[0,3,4,5,6],times:[['11:00','14:30'],['17:00','20:00']],source:'店舗公式サイト',url:'https://sites.google.com/view/sanpuku/',checked:'2026-11-01',lo:'月火定休／L.O.昼14:10・夜19:40'},
+ 'はま寿司 田原店':{days:[0,1,2,3,4,5,6],times:[['10:00','24:00']],source:'はま寿司公式店舗情報',url:'https://maps.zensho.co.jp/jp/detail/4431.html',checked:'2026-11-01',lo:'2026年10月1日から10:00〜24:00。最終入店23:30／L.O.23:45'}
+});
+// 同名異店舗との混同を防ぐため、かれんとは利用者提供の東赤石のGoogleマップを優先。
+const officialMapLinks={'珈琲屋 かれんと田原店':'https://maps.app.goo.gl/qF1Fdt9NEndHSbm68?g_st=ac'};
+const independentlyReportedStationKm={'珈琲屋 かれんと田原店':0.415}; // マピオン掲載の駅からの直線距離。GPS距離ではない。
+const geoErrors={};
+
+// V44: 渥美半島観光ビューロー会員一覧（2026-11-01閲覧）で照合した連絡先・住所。
+// 既存値がある場合は上書きせず、相違は今後の要確認事項とする。
+const v44MemberRecords={
+ '田原市役所食堂':{phone:'090-9941-7304',address:'愛知県田原市田原町南番場30'},
+ 'おはや':{phone:'0531-22-0888',address:'愛知県田原市加治町洲田10-1'},
+ 'めん処 はないち':{phone:'0531-45-4187',address:'愛知県田原市赤羽根町赤土25-8'},
+ '基巳屋':{phone:'0531-25-0818',address:'愛知県田原市野田町池田35-1'},
+ '遊食ダイニング 風雅':{phone:'0531-22-3961',address:'愛知県田原市田原町萱町1 セントファーレ2F'},
+ 'レストラン サーフィン':{phone:'0531-45-3181',address:'愛知県田原市赤羽根町赤土17・18'}
+};
+for(const [name,v] of Object.entries(v44MemberRecords)){
+ if(shops.some(x=>x.name===name)){
+  if(!phones[name])phones[name]=v.phone;
+  if(!verifiedAddresses[name])verifiedAddresses[name]=v.address;
+ }
+}
+const geoCache=(()=>{try{return JSON.parse(localStorage.getItem('taharaGeoV37')||localStorage.getItem('taharaGeoV36')||localStorage.getItem('taharaGeoV35')||'{}')}catch{return {}}})();
+function saveCoordinate(name,lat,lon){const point={lat:Number(lat),lon:Number(lon),source:'利用者が地図座標を登録'};if(!validPoint(point))throw Error('田原市周辺の有効な緯度・経度を入力してください');geoCache[name]=point;try{localStorage.setItem('taharaGeoV37',JSON.stringify(geoCache))}catch{}return point}
+function coordinateEditor(name){const current=geoCache[name];const lat=prompt(name+' の緯度を入力（Googleマップのピンの座標）',current?.lat??'');if(lat===null)return;const lon=prompt(name+' の経度を入力',current?.lon??'');if(lon===null)return;try{saveCoordinate(name,lat,lon);alert('位置を保存しました。もう一度GOで距離を再計算します。')}catch(e){alert(e.message)}}
+window.coordinateEditor=coordinateEditor;
+function distance(a,b){const r=Math.PI/180,dLat=(a.lat-b.lat)*r,dLon=(a.lon-b.lon)*r,q=Math.sin(dLat/2)**2+Math.cos(a.lat*r)*Math.cos(b.lat*r)*Math.sin(dLon/2)**2;return 6371*2*Math.atan2(Math.sqrt(q),Math.sqrt(1-q))}
+const wait=ms=>new Promise(r=>setTimeout(r,ms));
+// 田原市中心部から大きく外れる検索結果や、店名が一致しない候補は採用しない。
+function validPoint(v){return v&&Number.isFinite(v.lat)&&Number.isFinite(v.lon)&&v.lat>=34.55&&v.lat<=34.80&&v.lon>=137.10&&v.lon<=137.45}
+async function lookupCoordinates(name){
+ if(validPoint(geoCache[name]))return geoCache[name];
+  geoErrors[name]='地図検索で位置を特定できませんでした';
+ const normalize=t=>String(t||'').normalize('NFKC').replace(/[\s・　]/g,'').toLowerCase();
+ const queries=knownAddresses[name]?[knownAddresses[name],name+' 田原市 愛知県']:[name+' 田原市 愛知県'];
+ for(const query of queries){
+  try{
+   const res=await fetch('https://nominatim.openstreetmap.org/search?format=json&addressdetails=1&limit=5&countrycodes=jp&q='+encodeURIComponent(query));
+   if(!res.ok)continue;
+   const rows=await res.json();
+   const hit=rows.find(r=>{
+    const v={lat:Number(r.lat),lon:Number(r.lon)};
+    const area=String(r.display_name||'');
+    const label=normalize(r.name||area.split(',')[0]);
+    const key=normalize(name);
+    return validPoint(v)&&area.includes('田原')&&(knownAddresses[name]&&query===knownAddresses[name] ? (area.includes('東赤石')||area.includes('Higashiakaishi')) : (label.includes(key)||key.includes(label)&&label.length>=3));
+   });
+   if(hit){
+    const v={lat:Number(hit.lat),lon:Number(hit.lon),source:query===knownAddresses[name]?'住所から推定（建物位置は未検証）':'地図上の店舗候補'};
+    geoCache[name]=v;
+    try{localStorage.setItem('taharaGeoV37',JSON.stringify(geoCache))}catch{}
+    return v;
+   }
+  }catch{}
+ }
+ // 別の公開地図検索でも住所を照合。店舗ピンとは限らないため住所推定として明示する。
+ if(knownAddresses[name]){
+  try{
+   const u='https://photon.komoot.io/api/?limit=8&q='+encodeURIComponent(knownAddresses[name]);
+   const res=await fetch(u);
+   if(res.ok){
+    const j=await res.json();
+    for(const f of (j.features||[])){
+     const prop=f.properties||{}, xy=f.geometry?.coordinates||[];
+     const point={lat:Number(xy[1]),lon:Number(xy[0])};
+     const city=String(prop.city||prop.county||prop.state||'');
+     const address=JSON.stringify(prop);
+     if(validPoint(point) && (city.includes('田原')||address.includes('田原')) && (address.includes('東赤石')||address.toLowerCase().includes('higashiakaishi'))){
+      const v={...point,source:'住所から推定（店舗ピン未確認）'};
+      geoCache[name]=v;delete geoErrors[name];try{localStorage.setItem('taharaGeoV37',JSON.stringify(geoCache))}catch{};
+      return v;
+     }
+    }
+   }
+  }catch{}
+ }
+ return null;
+}
+function currentPosition(){return new Promise((resolve,reject)=>{
+ if(!navigator.geolocation)return reject(Error('位置情報非対応'));
+ navigator.geolocation.getCurrentPosition(p=>{
+  if(p.coords.accuracy>1000)return reject(Error('GPS精度不足'));
+  resolve({lat:p.coords.latitude,lon:p.coords.longitude,accuracy:p.coords.accuracy});
+ },reject,{enableHighAccuracy:true,timeout:11000,maximumAge:30000});
+})}
+let searching=false;
+
+// V45: 2026-11-01 公開資料を再照合。出典の異なる情報は公式・観光資料を優先。
+Object.assign(verifiedAddresses,{
+ '中国料理 福忠':'愛知県田原市田原町築出15-1',
+ 'みかわの郷本店':'愛知県田原市浦町川向136-1',
+ '三ぷくうどん':'愛知県田原市田原町汐見15',
+ '麺吉':'愛知県田原市東赤石2丁目38',
+ 'ラーメン宝塔 田原店':'愛知県田原市田原町汐見12',
+ '健香食堂':'愛知県田原市東赤石5-8',
+ 'カジューバーガー':'愛知県田原市夕陽が浜159',
+ 'ココツキッチン':'愛知県田原市福江町白石5-1',
+ 'シャミーズカフェ':'愛知県田原市伊良湖町古山2814-4'
+});
+Object.assign(phones,{
+ '中国料理 福忠':'0531-22-0317',
+ 'みかわの郷本店':'0531-22-6382',
+ '三ぷくうどん':'0531-22-6153',
+ '麺吉':'0531-23-7577',
+ 'ラーメン宝塔 田原店':'0531-27-9877',
+ '健香食堂':'0531-22-6616',
+ 'カジューバーガー':'0531-36-4777',
+ 'ココツキッチン':'090-8188-2622',
+ 'シャミーズカフェ':'080-6917-6141'
+});
+Object.assign(verifiedHours,{
+ '中国料理 福忠':{days:[0,1,2,4,5,6],times:[['11:30','14:30'],['17:00','21:30']],source:'店舗公式サイト',url:'https://fukuchu.net/',checked:'2026-11-01',lo:'昼L.O.14:00／夜L.O.21:00'},
+ 'みかわの郷本店':{days:[0,1,2,3,4,5,6],times:[['11:00','15:00'],['17:00','21:00']],source:'渥美半島観光ビューロー',url:'https://www.taharakankou.gr.jp/spot/spot.php?spot_id=327',checked:'2026-11-01',lo:'年末年始休み'},
+ '三ぷくうどん':{days:[0,3,4,5,6],times:[['11:00','14:30'],['17:00','20:00']],source:'店舗公式サイト・るるぶ掲載情報',url:'https://sites.google.com/view/sanpuku/',checked:'2026-11-01',lo:'月・火定休／昼L.O.14:10／夜L.O.19:40'},
+ '健香食堂':{days:[1,2,3,4,5,6],times:[['11:00','14:30'],['17:00','23:00']],source:'2026田原赤羽根飲食店マップ',url:'https://www.taharakankou.gr.jp/download_pamphlet/tahara_inshokuten_map_2026_p1.pdf?ID=20260224123300',checked:'2026-11-01'},
+ 'ラーメン宝塔 田原店':{days:[2,3,4,5,6],times:[['18:00','24:00']],dayTimes:{5:[['18:00','26:00']],6:[['18:00','26:00']]},source:'2026田原赤羽根飲食店マップ（不定休のため曜日判定は参考）',url:'https://www.taharakankou.gr.jp/download_pamphlet/tahara_inshokuten_map_2026_p1.pdf?ID=20260224123300',checked:'2026-11-01',lo:'火～木24:00まで／金土26:00まで・不定休'},
+ 'カジューバーガー':{days:[0,1,2,4,5,6],times:[['10:30','14:30'],['16:30','21:00']],dayTimes:{0:[['10:30','21:00']],6:[['10:30','21:00']]},source:'愛知東三河Outdoor Route掲載情報',url:'https://www.honokuni.or.jp/outdoorfield/facility/cycle_station.html',checked:'2026-11-01',lo:'水曜定休／祝日特例は未実装'},
+ 'シャミーズカフェ':{days:[0,1,2,3,4,5,6],times:[['11:00','18:00']],source:'愛知東三河Outdoor Route掲載情報',url:'https://www.honokuni.or.jp/outdoorfield/facility/cycle_station.html',checked:'2026-11-01',lo:'定休日は要確認'}
+});
+document.getElementById("go").addEventListener("click",async()=>{
+ if(searching)return;searching=true;document.getElementById('go').disabled=true;
+ try{
+ for(const k of Object.keys(data)){const w=document.getElementById(k);index[k]=Math.max(0,Math.min(data[k].length-1,Math.round(w.scrollTop/66)))}refresh();
+ const category=data.food[index.food],day=dayIndex[index.day],meal=data.meal[index.meal];
+ const base=shops.filter(x=>category==="指定なし"||x.category===category||(category==="そば"&&x.name.includes("そば"))||(category==="パスタ"&&x.category==="イタリアン")||(category==="ステーキ"&&x.name.includes("ステーキ"))||(category==="小料理屋"&&x.category==="和食"));
+ const uniqueBase=base.filter((x,i)=>!base.slice(0,i).some(y=>y.name===x.name));
+  // 選択した時間帯に重なる営業開始時刻を優先。該当なしは当日の最初の開始時刻、情報なしは最後。
+ const openingKey=x=>{if(!x.hours)return 9999;const times=timesFor(x.hours,day).map(t=>minutes(t[0]));if(!x.hours.days.includes(day))return Math.min(...times)+3000;const [start,end]=slot[meal].map(minutes);const relevant=timesFor(x.hours,day).filter(([a,b])=>minutes(a)<end&&minutes(b)>start).map(t=>minutes(t[0]));return relevant.length?Math.min(...relevant):Math.min(...times)+1500};
+ const byOpening=(a,b)=>openingKey(a)-openingKey(b)||a.name.localeCompare(b.name,'ja');
+ const checked=uniqueBase.map(x=>({...x,hours:scheduleFor(x.name)})).sort(byOpening);
+ const mode=data.order[index.order];let origin=station;let locationNote='';let gpsStatus='位置情報不要';
+ if(mode==='現在地順'){try{origin=await currentPosition();gpsStatus='GPS取得成功（誤差目安 約'+Math.round(origin.accuracy)+'m）'}catch(e){gpsStatus='GPS取得失敗';locationNote='現在地を取得できなかったため三河田原駅を基準にしました。HTTPSでの公開と位置情報の許可が必要です。'}}
+ if(mode==='田原駅順')gpsStatus='三河田原駅基準（駅座標は概算）';
+ if(mode!=='開店順'){
+   const candidates=[...checked].sort((a,b)=>Number(b.name.includes('かれんと'))-Number(a.name.includes('かれんと')));
+   const todo=candidates.filter(x=>!validPoint(geoCache[x.name])).slice(0,35);
+   if(todo.length){document.getElementById('result').innerHTML='<h2>店舗位置を確認中</h2><div class="notice" id="geoProgress">0 / '+todo.length+'件を検索中。初回は時間がかかります。初回は最大35店舗を照合します。距離未確認の店舗も一覧に残します。</div>';}
+   for(let i=0;i<todo.length;i++){await lookupCoordinates(todo[i].name);const el=document.getElementById('geoProgress');if(el)el.textContent=(i+1)+' / '+todo.length+'件の位置を確認中…';if(i<todo.length-1)await wait(1100)}
+ }
+ checked.forEach(x=>{x.km=validPoint(geoCache[x.name])?distance(origin,geoCache[x.name]):null; x.stationReported=(mode==='田原駅順'&&x.km==null)?independentlyReportedStationKm[x.name]:null});
+ checked.sort((a,b)=>Number(isChain(a))-Number(isChain(b))||(mode==='開店順'?openingKey(a)-openingKey(b)||((a.km??Infinity)-(b.km??Infinity)):(a.km??a.stationReported??Infinity)-(b.km??b.stationReported??Infinity)||openingKey(a)-openingKey(b))||a.name.localeCompare(b.name,'ja'));
+ const open=checked.filter(x=>x.hours&&matchHours(x.hours,day,meal));
+ const unknown=checked.filter(x=>!x.hours);
+ const closed=checked.filter(x=>x.hours&&!matchHours(x.hours,day,meal));
+ function item(x,status){
+ const url=officialMapLinks[x.name] || ("https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(verifiedAddresses[x.name]||x.name+" 田原市 愛知県"));
+ const hours=x.hours?timesFor(x.hours,day).map(t=>t.join('〜')).join(' / '):"時間情報なし";
+  const phone=phones[x.name];const phoneHtml=phone?'<a class="shop-map" href="tel:'+phone.replace(/[^0-9+]/g,'')+'">☎ '+esc(phone)+' · 電話する</a>':'<span class="shop-source">電話番号未確認</span>';
+  const geoHtml=x.km==null&&x.stationReported==null?'<span class="shop-source">位置検索：'+esc(geoErrors[x.name]||'座標未取得（検索未実施の可能性あり）')+'</span>':'';
+ return '<article class="shop"><strong>'+esc(x.name)+'</strong><span class="shop-meta">'+esc(x.category)+' · '+esc(status)+(x.km!=null?' · 直線約'+x.km.toFixed(1)+'km':x.stationReported!=null?' · 駅から約'+Math.round(x.stationReported*1000)+'m（地図掲載値）':' · 距離未確認（地図照合不可）')+(isChain(x)?' · チェーン店':'')+'</span><span class="shop-hours">'+esc(hours)+'</span><span class="shop-source">'+(x.hours?.checked?esc(x.hours.source+' ／ 公開情報確認日：'+x.hours.checked+(x.hours.lo?' ／ '+x.hours.lo:''))+(x.hours.url?' ／ <a target="_blank" rel="noopener noreferrer" href="'+x.hours.url+'">情報源を見る</a>':''):x.hours?'未検証の参考時間・曜日（営業保証なし）／最終確認日：未登録':'営業時間未登録／最終確認日：未登録')+'</span>'+geoHtml+phoneHtml+'<a class="shop-map" target="_blank" rel="noopener noreferrer" href="'+url+'">Googleマップで確認・経路案内 ↗</a><button type="button" class="coord-edit" onclick="coordinateEditor(shops['+shops.findIndex(z=>z.name===x.name)+'].name)">📍座標を登録・修正（任意）</button></article>'
+}
+ document.getElementById("result").innerHTML='<h2>参考営業時間に一致 '+open.length+'件 / 登録'+shops.length+'件</h2><p class="result-note">'+esc(data.day[index.day]+'・'+meal+'・'+category)+'</p><div class="notice">チェーン店は最後。並び順は選択したドラムに従います。距離は直線距離で、店舗位置は公開地図の候補を田原市域・店名で照合した参考値です。不一致の場合は距離未確認にします。一部店舗は公式情報と照合済み。距離検索は最大35店舗ずつ位置確認し、未取得店は距離未確認として表示します。曜日別営業時間にも対応（祝日特例は未対応）。その他の参考営業時間は出典未照合です。営業保証はありません。営業時間未登録 '+unknown.length+'件、時間外・定休 '+closed.length+'件。<br>※時間帯が一部でも重なる店舗を含みます。営業時間は参考情報です。祝日・臨時休業・予約条件・ラストオーダーは完全には反映していません。訪問前に店舗へ確認してください。</div>'+'<p class="result-note">位置情報：'+esc(gpsStatus)+'</p>'+(locationNote?'<p class="result-note">'+esc(locationNote)+'</p>':'')+(open.map(x=>item(x,x.hours?.checked?'公開情報と照合済み（当日の営業保証なし）':'参考時間帯に一致・未検証')).join('')||'<p>参考時間に合う候補はありません。</p>')+'<h2 style="margin-top:24px">営業時間未登録 '+unknown.length+'件（距離順で表示）</h2>'+unknown.map(x=>item(x,'要確認')).join('')+'<details><summary>時間外・定休日 '+closed.length+'件を見る</summary>'+closed.map(x=>item(x,'選択時間帯は対象外')).join('')+'</details>';
+ const auditRows=[...new Map(shops.map(x=>[x.name,x])).values()].map(x=>{const h=verifiedHours[x.name],a=verifiedAddresses[x.name],p=phones[x.name],g=geoCache[x.name];return {name:x.name,category:x.category,hours:h?'掲載情報照合（公式とは限らない）':scheduleFor(x.name)?'参考値・未照合':'未登録',phone:p||'未確認',address:a||knownAddresses[x.name]||'未確認',coordinate:validPoint(g)?'位置座標あり':'未確認',source:h?.source||'未照合'}});
+
+ function renderAccuracyDashboard(rows){
+  const n=rows.length;
+  const metrics=[
+   ['営業時間（掲載情報照合）',rows.filter(x=>x.hours.startsWith('掲載情報')).length],
+   ['電話番号（登録あり）',rows.filter(x=>x.phone!=='未確認').length],
+   ['住所（登録あり）',rows.filter(x=>x.address!=='未確認').length],
+   ['店舗座標（登録あり）',rows.filter(x=>x.coordinate==='位置座標あり').length]
+  ];
+  const complete=rows.filter(x=>x.hours.startsWith('掲載情報')&&x.phone!=='未確認'&&x.address!=='未確認'&&x.coordinate==='位置座標あり').length;
+  // 照合率は出典の裏付けが記録された項目だけを計上する。単なる登録とは区別。
+  const confirmedHours=rows.filter(x=>{const h=verifiedHours[x.name];return h&&h.checked&&/公式|観光ビューロー/.test(h.source||'')}).length;
+  const confirmedPhone=rows.filter(x=>x.phone!=='未確認'&&(typeof verifiedPhoneSources!=='undefined'&&verifiedPhoneSources[x.name])).length;
+  const confirmedAddress=rows.filter(x=>x.address!=='未確認'&&(typeof verifiedAddressSources!=='undefined'&&verifiedAddressSources[x.name])).length;
+  const confirmedGeo=rows.filter(x=>x.coordinate==='位置座標あり'&&geoCache[x.name]?.source&&/確認済|店舗公式|現地/.test(geoCache[x.name].source)).length;
+  const confirmedTotal=confirmedHours+confirmedPhone+confirmedAddress+confirmedGeo;
+  const priority=rows.map(x=>({name:x.name,missing:[x.hours==='未登録'?'営業時間':null,x.phone==='未確認'?'電話番号':null,x.address==='未確認'?'住所':null,x.coordinate!=='位置座標あり'?'座標':null].filter(Boolean)})).sort((a,b)=>b.missing.length-a.missing.length||a.name.localeCompare(b.name,'ja')).slice(0,25);
+  const sourceWarnings=['基巳屋（もとみや）：昼休憩の有無に掲載差異。暫定的に15:00〜17:00を休憩として扱う（店舗未確認）','珈琲屋 かれんと田原店：外部地図と店舗公式の閉店時刻に差異。公式の曜日別情報を優先'];
+  const pct=count=>n?(100*count/n).toFixed(1):'0.0';
+  const overall=metrics.reduce((sum,[,count])=>sum+count,0);
+  document.getElementById('accuracyPanel').innerHTML='<h2>店舗データ照合状況（全'+n+'店舗）</h2>'+
+   '<p class="audit-overall">根拠付き情報照合率 <strong>'+((100*confirmedTotal/(4*n))||0).toFixed(1)+'%</strong><small>公式・観光情報の営業時間、および出典記録のある電話・住所・座標のみ。根拠未記録の登録値は算入しません。</small></p>'+ 
+   '<p class="result-note">内訳：営業時間 '+confirmedHours+' / 電話 '+confirmedPhone+' / 住所 '+confirmedAddress+' / 座標 '+confirmedGeo+' 件（全'+n+'店舗）</p>'+ 
+   '<details class="audit-details"><summary>未登録項目の多い店舗 上位25件を見る</summary>'+priority.map(x=>'<p class="result-note">'+esc(x.name)+'：'+esc(x.missing.join('・')||'未登録なし')+'</p>').join('')+'</details>'+ 
+   '<p class="audit-overall">4項目のデータ充足率 <strong>'+pct(overall/4)+'%</strong><small>（全店舗×4項目に対する登録・照合済み項目の割合）</small></p>'+
+   metrics.map(([label,count])=>'<div class="audit-metric"><span>'+label+'</span><div class="audit-track"><div class="audit-fill" style="width:'+pct(count)+'%"></div></div><b>'+count+'/'+n+'（'+pct(count)+'%）</b></div>').join('')+
+   '<p class="audit-complete">4項目すべて揃った店舗：<strong>'+complete+'/'+n+'（'+pct(complete)+'%）</strong></p>'+
+   '<details class="audit-details"><summary class="hours-discrepancy-summary">営業時間の情報差異（2店舗）を見る</summary><p class="result-note">'+sourceWarnings.map(esc).join('<br>')+'</p></details>'+
+   '<p class="result-note">※ この％は登録データの充足率です。正確性の保証や公式確認率ではありません。営業時間は第三者掲載情報を含み、電話・住所・座標は登録済みでも正確性の再確認が必要です。公開判断には営業時間・定休日の鮮度、閉店情報、電話番号の誤登録、座標の位置精度を別途検査してください。</p>';
+ }
+ renderAccuracyDashboard(auditRows);
+ const auditCounts={phone:auditRows.filter(x=>x.phone!=='未確認').length,address:auditRows.filter(x=>x.address!=='未確認').length,geo:auditRows.filter(x=>x.coordinate==='位置座標あり').length,hours:auditRows.filter(x=>x.hours.startsWith('掲載情報')).length};
+ const auditEl=document.createElement('details');auditEl.className='audit-details';auditEl.innerHTML='<summary class="audit-all-summary">全'+auditRows.length+'店舗の確認状況を見る（電話・住所・営業時間・座標）</summary><p class="result-note">営業時間照合 '+auditCounts.hours+'件／電話 '+auditCounts.phone+'件／住所 '+auditCounts.address+'件／座標 '+auditCounts.geo+'件。未確認は推測で埋めていません。</p><button type="button" id="auditCsv" class="coord-edit">全店舗の確認表をCSVで保存</button><div style="overflow-x:auto"><table class="audit-table"><thead><tr><th>店名</th><th>営業時間</th><th>電話</th><th>住所</th><th>座標</th></tr></thead><tbody>'+auditRows.map(x=>'<tr><td>'+esc(x.name)+'</td><td>'+esc(x.hours)+'</td><td>'+esc(x.phone)+'</td><td>'+esc(x.address)+'</td><td>'+esc(x.coordinate)+'</td></tr>').join('')+'</tbody></table></div>';
+ document.getElementById('result').appendChild(auditEl);
+ document.getElementById('auditCsv').onclick=()=>{const cols=['name','category','hours','phone','address','coordinate','source'];const quote=v=>'"'+String(v??'').replace(/"/g,'""')+'"';const csv='\uFEFF'+[cols.join(','),...auditRows.map(x=>cols.map(c=>quote(x[c])).join(','))].join('\r\n');const blob=new Blob([csv],{type:'text/csv;charset=utf-8'});const u=URL.createObjectURL(blob);const a=document.createElement('a');a.href=u;a.download='tahara_gourmet_v47_all_shops_audit.csv';a.click();setTimeout(()=>URL.revokeObjectURL(u),3000)};
+ const audit=auditSummary();document.getElementById('result').insertAdjacentHTML('afterbegin','<p class="result-note">営業時間の照合記録あり '+audit.reviewed+'店舗 / 登録ユニーク '+audit.total+'店舗・未照合 '+audit.pending+'店舗。照合記録には第三者掲載情報も含み、全店の公式確認が済んだわけではありません。</p>');
+ document.getElementById('result').insertAdjacentHTML('beforeend','<p class="result-note">重の井：2026年10月31日にリニューアル営業再開との利用者情報あり。営業時間11:00〜13:00／17:00〜24:00、月曜定休（利用者提供・公式未照合）。</p>');
+ document.getElementById("result").scrollIntoView({behavior:"smooth",block:"start"});
+ }finally{searching=false;document.getElementById('go').disabled=false}
+});
+</script><script>if("serviceWorker" in navigator && location.protocol==="https:"){window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}))}</script></body></html>
